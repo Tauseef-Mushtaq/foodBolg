@@ -1,0 +1,101 @@
+<div class="px-4 py-5 my-5 text-center">
+    <div class="display-5 fw-bold">Submit your Recipe</div>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead">Share your recipe with thousands of people across the World. Fill out the form below to get started.</p>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+
+    <% if (typeof infoErrorObj !='undefined' ) {%>
+        <div class="col-8 alert alert-danger" role="alert">
+            <%= infoErrorObj %>
+        </div>
+    <% } %>
+            
+    <% if (typeof infoSuccessObj !='undefined' ) {%>
+        <div class="col-8 alert alert-success" role="alert">
+            <%= infoSuccessObj %>
+        </div>
+    <% } %>
+
+
+    <div class="col-8 mb-4">
+        <form action="/submit-recipe" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
+            
+            <div class="row g-3">
+                
+                <div class="col-12">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" required>
+                    <div class="invalid-feedback">
+                        Email should be valid
+                    </div>
+                    
+                </div>
+
+                <div class="col-12">
+                    <label for="name" class="form-label">Recipe Name</label>
+                    <input type="text" name="name" class="form-control" id="name" required>
+                    <div class="valid-feedback">
+                        Title Looks Good
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="description" class="form-control" id="description" cols="30" rows="4" required></textarea>
+                    <div class="invalid-feedback">
+                        Please enter insturctions in Detail
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label for="ingredients" class="form-label">Ingredients</label>
+                    <br>
+                    <small>Example: Ice</small>
+                    <div class="ingredientList ">
+                        <div class="ingredientDiv mb-1">
+                            <input type="text" name="ingredients" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <button type="button" class="btn btn-outline-primary" id="addIngredientsBtn">+ Ingredient</button>
+                </div>
+
+                <div class="col-12">
+                    <label for="category">Select Category</label>
+                    <select name="category" id="category" class="form-control form-select" aria-label="Category" required>
+                        <option selected disabled>Select Category</option>
+                        <option value="Thai">Thai</option>
+                        <option value="American">American</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="Mexican">Mexican</option>
+                        <option value="Indian">Indian</option>
+                        <option value="Spanish">Spanish</option> 
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a category
+                    </div>
+                    
+                </div>
+
+                <div class="col-12">
+                    <label for="image" class="form-label">Product Image</label>
+                    <input type="file" name="image" class="form-control" id="image" required>
+                    <div class="invalid-feedback">
+                        Select a proper image
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Submit Recipe</button>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+</div>

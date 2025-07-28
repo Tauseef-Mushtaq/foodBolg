@@ -1,0 +1,43 @@
+<% if (recipe != undefined) {%>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><%= recipe.name %></li>
+    </ol>
+</nav>
+
+<div class="row mt-5">
+    <div class="col-12 col-md-4">
+        <img src="<%= recipe.image.url %>" class="img-fluid sticky-top" style="top: 20px;" alt="<%= recipe.name %>" loading="lazy">
+    </div>
+    <div class="col-12 col-md-8">
+        <div class="col-12"><h1><%= recipe.name %></h1></div>
+        <div class="col-12 mb-4"><i class="bi bi-tag"> </i><%= recipe.category %></div>
+        <div class="mb-4" style="white-space: pre-line">
+            <h4>Cooking Instructions</h4>
+            <%= recipe.description %>
+        </div>
+        <p><strong>Recipe By:</strong> <%= recipe.email %></p>
+
+        <div class="row pt-4">
+            <div class="col-12">
+                <h4>Ingredients</h4>
+                <ul class="list-group list-group-flush">
+                    <% for(step of recipe.ingredients) {%>
+                    <li class="list-group-item"><%= step %></li>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+<% }  else {%>
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Recipe Not Found</h4>
+        <p>The recipe you are looking for does not exist.</p>
+        <hr>
+        <p class="mb-0">Maybe you are looking for something like <a href="/explore-latest">this</a>?</p>
+    </div>
+<% } %>
